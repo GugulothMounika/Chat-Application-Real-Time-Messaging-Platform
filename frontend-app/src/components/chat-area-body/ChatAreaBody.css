@@ -1,0 +1,20 @@
+.chat-area-body {
+  overflow-y: auto;
+}
+
+.senderMessage {
+  justify-self: flex-end;
+  background-color: rgb(2, 66, 2);
+}
+
+.receiverMessage {
+  justify-self: flex-start;
+  background-color: rgb(66, 64, 64);
+}
+.message {
+  display: flex;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px;
+}

@@ -1,0 +1,66 @@
+.forgot-container {
+    height: 100vh;
+    background-image: 
+        linear-gradient(45deg, rgba(0, 0, 0, 0.8), rgba(0, 100, 0, 0.8)),
+        url("https://png.pngtree.com/thumb_back/fw800/background/20230913/pngtree-cell-phone-and-paper-speech-bubbles-next-to-blue-surface-of-image_13274584.jpg"); /* Replace with your actual image URL */
+    background-repeat: no-repeat;
+    background-size: cover; /* More natural scaling */
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.forgot-form{
+    width: 400px;
+    /* height: 300px; */
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.forgot-form h2{
+    font-size: 26px;
+    text-align: center;
+    color:darkgreen;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.forgot-from div{
+ margin-bottom: 15px;
+
+}
+.forgot-form input{
+    width: 100%;
+    background-color: #c9c2c2;
+    /* margin-bottom: 15px; */
+    margin-top: 15px;
+    border: none;
+    outline: 0;
+    padding: 15px 5px;
+}
+.forgot-form button{
+   background-color: darkgreen;
+   width: 100%;
+   color: white;
+   border: none;
+   outline: none;
+   padding: 13px;
+   border-radius: 5px;
+   margin: 7px auto;
+   font-size: 16px;
+}
+.forgot-password{
+    display: flex;
+    justify-content:center;
+    margin: 7px;
+    
+}
+.forgot-password a{
+    color: green;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    position: relative;
+    left:5px ;
+    
+}
