@@ -5,7 +5,9 @@ import startChatContext from "../../context/startChatContext";
 import "./ChatListUser.css";
 import loggedInUserContext from "../../context/loggedInUserContext";
 import allChatContext from "../../context/allChatContext";
+import onlineUsersContext from "../../context/OnlineUsersContext";
 function ChatListUser({
+  // isOnline,
   username,
   email,
   id,
@@ -13,6 +15,7 @@ function ChatListUser({
   selectChatListComp,
   selectedChatListComp,
 }) {
+  const { onlineusers } = useContext(onlineUsersContext);
   const chatListContainerRef = useRef(null);
   const profileRef = useRef(null);
   const usernameRef = useRef(null);
@@ -30,7 +33,7 @@ function ChatListUser({
   const getAllChats = () => {
     axios
       .get(
-        `http://localhost:3000/api/chats/get-all-messages/${loggedInUser._id}/${id}`
+        `http://localhost:3000/api/chats/get-all-messages/${loggedInUser._id}/${id}`,
       )
       .then((res) => {
         console.log(res.data);
@@ -60,12 +63,26 @@ function ChatListUser({
           ref={profileRef}
           id="profile"
           style={{
-            backgroundColor: selectedChatListComp === index ? "white" : "green",
+            // backgroundColor: selectedChatListComp === index ? "white" : "green",
             color: selectedChatListComp === index ? "green" : "white",
             fontWeight: "bold",
           }}
         >
-          {username.slice(0, 2)}
+          <div
+            id="mode"
+            style={{
+              backgroundColor: onlineusers.includes(id) ? "green" : "red",
+            }}
+          ></div>
+          <img
+            src="https://img.freepik.com/premium-photo/professional-males-colleagues-hd-8k-wallpaper-stock-photographic-image_1033957-29162.jpg"
+            alt=""
+            width="50"
+            height={"50"}
+            // width={"100%"}
+            // height={"100%"}
+          />
+          {/* {username.slice(0, 2)} */}
         </div>
       </div>
       <div className="chat-list-user-details">

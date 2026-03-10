@@ -11,6 +11,7 @@ function Signup() {
   let emailRef = useRef(null);
   let genderRef = useRef(null);
   let cityRef = useRef(null);
+  let fileRef = useRef(null);
 
   return (
     <div className="signup-container">
@@ -60,6 +61,10 @@ function Signup() {
           </select>
         </div>
 
+        <div>
+          <input type="file" ref={fileRef} />
+        </div>
+
         <div style={{ textAlign: "center" }}>
           <button
             type="button"
@@ -73,7 +78,8 @@ function Signup() {
                 emailRef,
                 cityRef,
                 genderRef,
-                navigate
+                navigate,
+                fileRef,
               );
             }}
           >

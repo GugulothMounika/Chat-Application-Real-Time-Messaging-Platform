@@ -22,3 +22,7 @@
   color: green;
   font-size: 27px;
 }
+.emoji {
+  position: absolute;
+  bottom: 50px;
+}

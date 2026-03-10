@@ -1,3 +1,4 @@
+
 const Chat = require("../model/chatModel.js");
 
 function createNewMessage(req, res) {

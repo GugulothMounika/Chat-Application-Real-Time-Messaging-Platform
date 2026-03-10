@@ -5,16 +5,19 @@
 .senderMessage {
   justify-self: flex-end;
   background-color: rgb(2, 66, 2);
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .receiverMessage {
   justify-self: flex-start;
   background-color: rgb(66, 64, 64);
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 .message {
   display: flex;
   color: white;
   padding: 20px;
-  border-radius: 10px;
   margin: 20px;
 }

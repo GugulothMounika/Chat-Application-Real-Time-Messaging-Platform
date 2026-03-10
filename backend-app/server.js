@@ -9,11 +9,16 @@ const ChatRoute = require("./routes/chatRoute.js");
 const app = express();
 
 app.use(cors());
-app.use(express.json());
+app.use(
+  express.json({
+    limit: "50mb",
+  }),
+);
 app.use("/api/auth", AuthRoute);
 app.use("/api/users", UserRoute);
 app.use("/api/chats", ChatRoute);
 
+const onlineUsers = [];
 const server = createServer(app);
 
 const io = new Server(server, {
@@ -25,6 +30,8 @@ const io = new Server(server, {
 
 io.on("connection", (socket) => {
   socket.on("join-room", (userId) => {
+    onlineUsers.push(userId);
+    io.emit("online", onlineUsers);
     if (userId) {
       socket.join(userId);
     }
@@ -34,6 +41,17 @@ io.on("connection", (socket) => {
     if (data) {
       io.to(data.userIds[0]).to(data.userIds[1]).emit("received-message", data);
     }
+  });
+
+  socket.on("offline", (id) => {
+    //index
+    // const index =    onlineUsers.indexOf(id)
+    // onlineUsers.splice(index,1)
+
+    var filteredIds = onlineUsers.filter((userId) => {
+      return userId != id;
+    });
+    io.emit("offline", filteredIds);
   });
 });
 

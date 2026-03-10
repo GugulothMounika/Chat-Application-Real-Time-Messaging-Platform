@@ -1,22 +1,27 @@
 const User = require("../model/authModel.js");
+const cloudinary = require("../cloudinary.js");
 
 function createUser(req, res) {
   //receive the data of request
   const data = req.body;
+  const file = req.body.file;
 
-  //Create a object for Model Class
-  const user = new User(data);
+  //Cloudinary
+  cloudinary.uploader.upload(file).then((imageData) => {
+    //Create a object for Model Class
+    const user = new User({ ...data, file: imageData.secure_url });
+    user
+      .save()
+      .then(() => {
+        res.send({ ok: true, result: "User Account Created Successfully" });
+      })
+      .catch((error) => {
+        res.send({ ok: false, error: "Failed to Create Account For User" });
+        console.log(error);
+      });
+  });
 
   //save the user data
-  user
-    .save()
-    .then(() => {
-      res.send({ ok: true, result: "User Account Created Successfully" });
-    })
-    .catch((error) => {
-      res.send({ ok: false, error: "Failed to Create Account For User" });
-      console.log(error);
-    });
 }
 
 function signin(req, res) {

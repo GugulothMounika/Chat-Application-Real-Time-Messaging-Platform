@@ -1,4 +1,5 @@
 const User = require("../model/authModel");
+const cloudinary = require("../cloudinary");
 function getAllUsers(req, res) {
   const loggedInUserId = req.params.id;
 
@@ -11,4 +12,15 @@ function getAllUsers(req, res) {
     });
 }
 
-module.exports = { getAllUsers };
+function updateUser(req, res) {
+  User.updateOne({ _id: req.params.id }, { $set: req.body })
+    .then((data) => {
+      console.log(data);
+      res.send({ ok: true, result: "user-updated" });
+    })
+    .catch((error) => {
+      res.send({ ok: false, error: "failed to update data", error });
+    });
+}
+
+module.exports = { getAllUsers, updateUser };

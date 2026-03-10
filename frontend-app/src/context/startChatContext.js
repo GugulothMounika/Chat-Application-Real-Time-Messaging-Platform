@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-const startChatContext = createContext();
+var loggedInUserContext = createContext();
 
-export default startChatContext;
+export default loggedInUserContext;

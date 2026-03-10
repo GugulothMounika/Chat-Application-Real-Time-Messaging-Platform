@@ -5,6 +5,8 @@ import Signin from "../../pages/sign-in/Signin.jsx";
 import Signup from "../../pages/sign-up/Signup.jsx";
 import Pagenotfound from "../../pages/page-not-found/Pagenotfound.jsx";
 import Profile from "../../pages/profile/Profile.jsx";
+import UpdateProfile from "../../pages/profile/UpdateProfile.jsx";
+
 function MyRoutes({ isLoggedIn }) {
   return (
     <Routes>
@@ -12,6 +14,11 @@ function MyRoutes({ isLoggedIn }) {
       <Route
         path={"/profile"}
         element={isLoggedIn ? <Profile /> : <Signin />}
+      />
+
+      <Route
+        path={"/update-profile"}
+        element={isLoggedIn ? <UpdateProfile /> : <Signin />}
       />
       <Route
         path={"/sign-up"}

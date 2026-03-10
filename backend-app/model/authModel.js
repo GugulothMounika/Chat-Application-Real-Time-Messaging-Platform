@@ -24,6 +24,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  file: {
+    type: String,
+    require: true,
+  },
 });
 
 //Create Model Class or Model Class represents Collection here
